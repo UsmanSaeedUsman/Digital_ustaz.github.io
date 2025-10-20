@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Usman Saeed — Professional Portfolio</title>
+  <meta name="description" content="Usman Saeed — Software Engineer. Portfolio showcasing projects, skills and contact." />
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <style>
+    /* ========== Variables ========== */
+    :root{
+      --bg: #f7f8fb;
+      --card: #ffffff;
+      --text: #0f1724;
+      --muted: #556072;
+      --accent: #0ea5a4;
+      --glass: rgba(255,255,255,0.6);
+      --radius: 14px;
+      --maxw: 1100px;
+      --shadow: 0 6px 20px rgba(12,18,31,0.08);
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;
+    }
+    [data-theme="dark"]{
+      --bg:#071021;
+      --card:#071626;
+      --text:#e6eef6;
+      --muted:#9fb0c6;
+      --accent:#2dd4bf;
+      --glass: rgba(255,255,255,0.03);
+      --shadow: 0 8px 30px rgba(2,6,23,0.7);
+    }
+
+    /* ========== Base ========== */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:linear-gradient(180deg, var(--bg), color-mix(in srgb, var(--bg) 92%, #0000));
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:32px 20px;
+      display:flex;
+      justify-content:center;
+    }
+    .container{
+      width:100%;
+      max-width:var(--maxw);
+      margin:0 auto;
+    }
+
+    /* ========== Header ========== */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:28px;
+    }
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      text-decoration:none;
+      color:var(--text);
+    }
+    .logo{
+      width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#60a5fa);
+      display:grid;place-items:center;color:white;font-weight:700;font-family:var(--mono);
+      box-shadow:var(--shadow);
+    }
+    nav{display:flex;gap:12px;align-items:center}
+    .btn{
+      background:var(--accent);
+      color:#022;
+      border:none;border-radius:10px;padding:10px 14px;font-weight:600;
+      cursor:pointer;box-shadow:var(--shadow);text-decoration:none;
+    }
+    .ghost{
+      background:transparent;border:1px solid color-mix(in srgb, var(--muted) 30%, transparent);
+      color:var(--text);padding:8px 12px;border-radius:10px;
+    }
+
+    /* ========== Grid layout ========== */
+    main{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:22px;
+    }
+    @media(min-width:920px){
+      main{grid-template-columns: 1fr 360px;}
+    }
+
+    /* ========== Left column ========== */
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:20px;
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(6px);
+    }
+    .hero{
+      display:flex;gap:18px;align-items:center;
+      padding:18px;border-radius:12px;
+    }
+    .avatar{
+      width:100px;height:100px;border-radius:14px;flex-shrink:0;
+      background:linear-gradient(180deg,#111827,#374151);display:grid;place-items:center;color:white;font-weight:700;
+      font-family:var(--mono);font-size:28px;
+    }
+    h1{margin:0;font-size:26px}
+    .lead{color:var(--muted);margin-top:6px}
+
+    .actions{display:flex;gap:10px;margin-top:14px}
+
+    /* projects grid */
+    .projects{
+      display:grid;gap:12px;
+      grid-template-columns:1fr;
+      margin-top:12px;
+    }
+    @media(min-width:720px){ .projects{grid-template-columns:repeat(2,1fr)} }
+
+    .project-card{
+      border-radius:12px;padding:12px;background:linear-gradient(180deg, rgba(0,0,0,0.02), transparent);
+      display:flex;flex-direction:column;gap:10px;border:1px solid color-mix(in srgb, var(--muted) 8%, transparent);
+    }
+    .project-thumb{height:120px;border-radius:8px;background:#e6eef8;background-size:cover;background-position:center}
+
+    /* Skills */
+    .skills{display:grid;gap:10px;margin-top:12px}
+    .skill{display:flex;justify-content:space-between;gap:12px;align-items:center}
+    .bar{height:10px;background:color-mix(in srgb, var(--muted) 12%, transparent);border-radius:999px;flex:1;overflow:hidden;margin-left:12px}
+    .bar > span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--accent),#7c3aed);}
+
+    /* ========== Right column widgets ========== */
+    .profile{
+      display:flex;flex-direction:column;gap:12px;
+      position:sticky;top:28px;
+    }
+    .mini{
+      display:flex;gap:12px;align-items:center;
+    }
+    .contact-card{display:flex;flex-direction:column;gap:8px}
+
+    /* footer */
+    footer{margin-top:28px;text-align:center;color:var(--muted);font-size:13px}
+
+    /* small utilities */
+    .muted{color:var(--muted)}
+    .tag{font-size:12px;padding:6px 8px;border-radius:999px;border:1px solid color-mix(in srgb,var(--muted) 10%,transparent)}
+    .row{display:flex;gap:8px;align-items:center}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+    /* contact form */
+    form{display:grid;gap:10px}
+    input,textarea{
+      padding:10px;border-radius:10px;border:1px solid color-mix(in srgb,var(--muted) 12%,transparent);
+      background:transparent;color:var(--text);font-size:14px;resize:vertical;
+    }
+    input:focus,textarea:focus{outline:2px solid color-mix(in srgb,var(--accent) 30%, transparent);border-color:var(--accent)}
+    .small{font-size:13px;color:var(--muted)}
+
+    /* subtle animations */
+    .fade-in{animation:fade .6s both}
+    @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <div class="container" role="main">
+    <header class="fade-in" aria-label="Top navigation">
+      <a class="brand" href="#" aria-label="Home">
+        <div class="logo" aria-hidden="true">US</div>
+        <div>
+          <div style="font-weight:700">Usman Saeed Usman</div>
+          <div class="small muted">Software Engineer • Frontend Developer</div>
+        </div>
+      </a>
+
+      <nav>
+        <button id="theme-toggle" class="ghost" title="Toggle theme">Toggle theme</button>
+        <a class="btn" href="#projects">View Work</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- LEFT COLUMN -->
+      <section>
+        <article class="card hero fade-in" aria-labelledby="hero-title">
+          <div style="display:flex;gap:18px;align-items:center;flex:1;">
+           <img src="photo.jpg" width="100px" height="100px">
+            <div>
+              <h1 id="hero-title">Hi — I'm <span style="font-weight:800">Usman Saeed Usman </span></h1>
+              <div class="lead">Junior Software Engineer • React • JavaScript • UI-focused</div>
+              <div class="actions">
+                <a class="btn" href="#contact">Hire me</a>
+                <a class="ghost" href="#" id="download-resume">Download Resume</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card fade-in" aria-labelledby="about-title" style="margin-top:16px">
+          <h2 id="about-title">About Me</h2>
+          <p class="muted">
+            I build user-friendly web apps with a focus on clean interfaces and maintainable code. I enjoy
+            learning new frameworks, contributing to open source, and improving product performance.
+          </p>
+          <p class="small">Based in Nigeria • Open to remote roles • open for relocation</p>
+
+          <div style="margin-top:12px">
+            <h3 style="margin:0 0 8px 0">Core Skills</h3>
+            <div class="skills">
+              <div class="skill">
+                <div style="min-width:110px">HTML &amp; CSS</div>
+                <div class="bar"><span style="width:95%"></span></div>
+              </div>
+              <div class="skill">
+                <div style="min-width:110px">JavaScript</div>
+                <div class="bar"><span style="width:85%"></span></div>
+              </div>
+              <div class="skill">
+                <div style="min-width:110px">React</div>
+                <div class="bar"><span style="width:78%"></span></div>
+              </div>
+              <div class="skill">
+                <div style="min-width:110px">Node / APIs</div>
+                <div class="bar"><span style="width:65%"></span></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article id="projects" class="card fade-in" style="margin-top:16px" aria-labelledby="projects-title">
+          <h2 id="projects-title">Selected Projects</h2>
+
+          <div class="projects" role="list">
+            <!-- Project 1 -->
+            <div class="project-card" role="listitem">
+              <div class="project-thumb" style="background-image:url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=60')" aria-hidden="true"></div>
+              <div style="display:flex;justify-content:space-between;align-items:start">
+                <div>
+                  <strong>AfroMarketplace (Demo)</strong>
+                  <div class="muted small">E-commerce MVP — React + Firebase</div>
+                </div>
+                <div class="tag">Web</div>
+              </div>
+              <p class="small muted">A lightweight marketplace prototype for selling food, textiles, and study materials across Africa. Implemented product listing, cart, and payments integration.</p>
+              <div class="row">
+                <a class="ghost" href="#" aria-label="Open project">Open</a>
+                <a class="ghost" href="#" aria-label="Source code">Code</a>
+              </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card" role="listitem">
+              <div class="project-thumb" style="background-image:url('https://images.unsplash.com/photo-1526378725716-7a6c8bbf4b07?auto=format&fit=crop&w=800&q=60')" aria-hidden="true"></div>
+              <div style="display:flex;justify-content:space-between;align-items:start">
+                <div>
+                  <strong>E-voting System (Prototype)</strong>
+                  <div class="muted small">Node + Postgres + Auth</div>
+                </div>
+                <div class="tag">Backend</div>
+              </div>
+              <p class="small muted">Prototype for secure voting with role-based access and auditing. Includes ER diagram and SQL script.</p>
+              <div class="row">
+                <a class="ghost" href="#" aria-label="Open project">Open</a>
+                <a class="ghost" href="#" aria-label="Source code">Code</a>
+              </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card" role="listitem">
+              <div class="project-thumb" style="background-image:url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=60')" aria-hidden="true"></div>
+              <div style="display:flex;justify-content:space-between;align-items:start">
+                <div>
+                  <strong>German Learning Sheets</strong>
+                  <div class="muted small">Docs + PDF generation</div>
+                </div>
+                <div class="tag">Docs</div>
+              </div>
+              <p class="small muted">Printable PDF handouts for A2 learners: verbs, vocabulary, and pronunciation guides in Hausa and English.</p>
+              <div class="row">
+                <a class="ghost" href="#" aria-label="Open project">Open</a>
+                <a class="ghost" href="#" aria-label="Source code">Code</a>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <article class="card fade-in" id="contact" style="margin-top:16px" aria-labelledby="contact-title">
+          <h2 id="contact-title">Contact</h2>
+          <p class="muted">Want to work together? Send a quick message or email me directly.</p>
+
+          <form id="contact-form" novalidate>
+            <input id="name" type="text" placeholder="Your name" required />
+            <input id="email" type="email" placeholder="Your email" required />
+            <textarea id="message" rows="4" placeholder="Short message" required></textarea>
+            <div style="display:flex;gap:8px">
+              <button type="submit" class="btn">Send message</button>
+              <button id="mailto-btn" type="button" class="ghost">Email me</button>
+            </div>
+            <div id="form-status" class="small muted" aria-live="polite"></div>
+          </form>
+        </article>
+      </section>
+
+      <!-- RIGHT COLUMN -->
+      <aside class="profile">
+        <div class="card mini fade-in">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-weight:700">Usman Saeed</div>
+              <div class="small muted">Junior Developer • Nigeria</div>
+            </div>
+            
+          </div>
+          <div class="contact-card">
+            <div class="small muted">Email</div>
+            <div><a href="mailto:usmansaid210@gmail.com">usmansaid210@gmail.com</a></div>
+
+        
+            <div class="row">
+              <a class="ghost" href="https://github.com/UsmanSaeedUsman" title="GitHub">GH</a>
+              <a class="ghost" href="https://www.linkedin.com/in/usman-saeed-usman-2a53ba385?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" title="LinkedIn">LI</a>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="card fade-in">
+          <h3 style="margin:0 0 8px 0">Education</h3>
+          <div style="font-weight:700">BSc Software Engineering</div>
+          <div class="small muted">Federal University Dutse</div>
+          <div class="small muted" style="margin-top:8px">SIWES Internship: Jul — Dec 2025</div>
+        </div>
+
+
+
+<div class="card fade-in">
+  <h3 style="margin:0 0 8px 0">Languages</h3>
+  <ul style="list-style:none;padding:0;margin:0;line-height:1.6">
+    <li><strong>Hausa</strong> — Native</li>
+    <li><strong>English</strong> — Fluent (I have been studying with English language as a medium for the past 15years)</li>
+    <li><strong>Arabic</strong> — Good</li>
+    <li><strong>German</strong> — A2 level (currently studying, no certificate yet)</li>
+  </ul>
+</div>
+
+
+        <div class="card fade-in">
+          <h3 style="margin:0 0 8px 0">Quick Links</h3>
+          <div class="grid2">
+            <a class="ghost" href="#">CV</a>
+            <a class="ghost" href="https://github.com/UsmanSaeedUsman">GitHub</a>
+            <a class="ghost" href="http://127.0.0.1:5500/.vscode/new.html#projects">Portfolio</a>
+            <a class="ghost" href="https://www.linkedin.com/in/usman-saeed-usman-2a53ba385?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">LinkedIn</a>
+          </div>
+        </div>
+
+      </aside>
+    </main>
+
+    <footer class="fade-in">
+        <h3
+      >
+      <div>© <span id="year"></span> Digital_Ustaz</div>
+      </h3>
+    </footer>
+  </div>
+
+  <script>
+    // ========== Small interactivity ==========
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle (persist to localStorage)
+    const html = document.documentElement;
+    const themeToggle = document.getElementById('theme-toggle');
+    const saved = localStorage.getItem('site-theme');
+    if(saved) html.setAttribute('data-theme', saved);
+
+    themeToggle.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', current === 'dark' ? 'dark' : 'light');
+      localStorage.setItem('site-theme', current === 'dark' ? 'dark' : 'light');
+    });
+
+    // Resume download (placeholder - replace URL)
+    document.getElementById('download-resume').addEventListener('click', (e) => {
+      e.preventDefault();
+      // update this to your real resume URL or blob
+      const resumeUrl = 'resume.pdf'; // <-- change to real file path or hosted link
+      window.open(resumeUrl, '_blank');
+    });
+
+    // Contact form: simple client-side validation + mailto fallback
+    const form = document.getElementById('contact-form');
+    const mailtoBtn = document.getElementById('mailto-btn');
+    const formStatus = document.getElementById('form-status');
+
+    form.addEventListener('submit', (ev) => {
+      ev.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if(!name || !email || !message){
+        formStatus.textContent = 'Please fill all fields.';
+        return;
+      }
+      // Here you would usually POST to your API. For demo, we'll open mailto.
+      const subject = encodeURIComponent('Portfolio message from ' + name);
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+      window.location.href = `mailto:usmansaid210@gmail.com?subject=${subject}&body=${body}`;
+      formStatus.textContent = 'Opening mail client...';
+    });
+
+    mailtoBtn.addEventListener('click', () => {
+      window.location.href = 'mailto:usmansaid210@gmail.com';
+    });
+
+    // Accessibility: reduce motion preference
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      document.querySelectorAll('.fade-in').forEach(el => el.style.animation = 'none');
+    }
+  </script>
+</body>
+</html>
